@@ -37,7 +37,13 @@ def load_data(img_path,train = True):
     
     
     
-    target = cv2.resize(target,(target.shape[1]/8,target.shape[0]/8),interpolation = cv2.INTER_CUBIC)*64
+    # Calculate the new dimensions by dividing the original dimensions by 8
+    new_width = target.shape[1] // 8
+    new_height = target.shape[0] // 8
+    
+    # Resize the image using the calculated dimensions
+    target = cv2.resize(target, (new_width, new_height), interpolation=cv2.INTER_CUBIC) * 64
+
     
     
     return img,target
